@@ -18,11 +18,35 @@ public class UserDao {
     private static final String SELECT_ALL = "SELECT * FROM users;";
 
     public static void main(String[] args) {
+
+
         UserDao userDao = new UserDao();
-        //User user = new UserDao().create(new User("Kamilk@gmail.com","KamilK","TomaszK"));
-        //System.out.println( new UserDao().read(1));
-        //userDao.upload(new User(3,"katarzynakowalska@wp.pl","KasiaK","KasiaK"));
-        //userDao.delete(1);
+
+        User newUser = new User(
+                "kasiak@gmail.com",
+                "Kasia Kowalska",
+                "12345");
+        userDao.create(newUser);
+
+        User uploadUser = new User(
+                "kasiak@gmail.com",
+                "Kasia Kowal",
+                "12345");
+        userDao.upload(uploadUser);
+
+        userDao.delete(1);
+
+
+
+        User[] allUsers = userDao.findAll();
+        for(User u : allUsers){
+            System.out.println(u.toString());
+        }
+
+
+        //System.out.println( new UserDao().read(6));
+        //userDao.upload(new User(6,"kamilaogorek@wp.pl","Kamila Ogórek","Kamilak"));
+        //userDao.delete(6);
         //System.out.println(Arrays.toString(userDao.findAll()));
 
     }
